@@ -28,8 +28,8 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      humor: {
-        type: Sequelize.STRING,
+      castrado: {
+        type: Sequelize.BOOLEAN,
         allowNull: false,
       },
       obs: {

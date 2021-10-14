@@ -19,9 +19,9 @@ module.exports = {
     async editarInfoPetDono(req, res) {
         const { usuario_id } = req.params;
         const { pet_id } = req.params;
-        const { nome, raca, idade, humor, obs } = req.body;
+        const { nome, raca, idade, castrado, obs } = req.body;
 
-        await Pet.update({ nome, raca, idade, humor, obs }, {
+        await Pet.update({ nome, raca, idade, castrado, obs }, {
             where: {
                 [Op.and]: [{ usuario_id }, {id: pet_id}]
             }
@@ -31,7 +31,7 @@ module.exports = {
             nome,
             raca,
             idade,
-            humor,
+            castrado,
             obs,
         });
     },
@@ -44,7 +44,7 @@ module.exports = {
             where: {
                 [Op.and]: [{ usuario_id }, {id: pet_id}]
             },
-            attributes: ['nome', 'raca', 'idade', 'humor', 'obs', 'usuario_id', 'foto_id'],
+            attributes: ['nome', 'raca', 'idade', 'castrado', 'obs', 'usuario_id', 'foto_id'],
         });
 
         return res.json(pet);
@@ -65,7 +65,7 @@ module.exports = {
 
     async cadastro(req, res) {
         const { usuario_id } = req.params;
-        const { nome, raca, idade, humor, obs } = req.body;
+        const { nome, raca, idade, castrado, obs } = req.body;
 
         const user = await Usuario.findByPk(usuario_id);
 
@@ -73,7 +73,7 @@ module.exports = {
             return res.status(400).json({ error: 'Usuário não encontrado' });
         }
         
-        const pet = await Pet.create({ nome, raca, idade, humor, obs, usuario_id });
+        const pet = await Pet.create({ nome, raca, idade, castrado, obs, usuario_id });
 
         return res.json(pet);
     }

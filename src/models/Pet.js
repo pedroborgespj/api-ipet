@@ -6,7 +6,7 @@ class Pet extends Model {
             nome: DataTypes.STRING,
             raca: DataTypes.STRING,
             idade: DataTypes.INTEGER,
-            humor: DataTypes.STRING,
+            castrado: DataTypes.BOOLEAN,
             obs: DataTypes.STRING,
         }, {
             sequelize
