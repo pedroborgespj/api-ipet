@@ -1,9 +1,8 @@
+console.log('provess.env.JAWSDB_URL: >> ', process.env.JAWSDB_URL);
 module.exports = {
     dialect: 'mysql',
-    host: 'localhost',
-    username: 'root',
-    password: 'root',
-    database: 'ipet',
+    url: process.env.JAWSDB_URL,
+    
     define: {
         timestamps: true,
         underscored: true,
